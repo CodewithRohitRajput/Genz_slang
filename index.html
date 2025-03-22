@@ -216,6 +216,11 @@
                 </a>
             </li>
             <li>
+                <a href="#email-converter-section" onclick="document.getElementById('email-converter-section').scrollIntoView({behavior: 'smooth'}); return false;" style="text-decoration: none; color: #00ff00; font-family: 'Segoe UI', sans-serif; font-weight: bold; text-transform: uppercase; padding: 0.5rem 1rem; border: 1px solid #00ffff; border-radius: 5px; transition: all 0.3s ease;" onmouseover="this.style.background='linear-gradient(45deg, #ff00ff, #9d00ff)'; this.style.boxShadow='0 0 15px #ff00ff';" onmouseout="this.style.background='none'; this.style.boxShadow='none';">
+                    Email Slang
+                </a>
+            </li>
+            <li>
                 <a href="#examples-section" onclick="document.getElementById('examples-section').scrollIntoView({behavior: 'smooth'}); return false;" style="text-decoration: none; color: #00ff00; font-family: 'Segoe UI', sans-serif; font-weight: bold; text-transform: uppercase; padding: 0.5rem 1rem; border: 1px solid #00ffff; border-radius: 5px; transition: all 0.3s ease;" onmouseover="this.style.background='linear-gradient(45deg, #ff00ff, #9d00ff)'; this.style.boxShadow='0 0 15px #ff00ff';" onmouseout="this.style.background='none'; this.style.boxShadow='none';">
                     Examples
                 </a>
@@ -271,6 +276,66 @@
             </div>
         </div>
     </div>
+    <!-- Email convertor-->
+    <div class="email-converter" id="email-converter-section" style="background: rgba(0,0,0,0.5); padding: 2rem; border-radius: 15px; border: 1px solid #00ff00; backdrop-filter: blur(10px); margin: 2rem auto; max-width: 800px;">
+        <h2 style="font-family: 'Comic Sans MS', cursive; font-size: 2rem; background: linear-gradient(45deg, #ff00ff, #00ffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 1rem;">
+            Prof Email Glow-Up 📧🔥
+        </h2>
+        <p style="color: #00ff00; font-family: 'Segoe UI', sans-serif; font-size: 1.2rem; text-align: center; margin-bottom: 1.5rem;">
+            Drop your prof’s boring email here and we’ll slap some Gen-Z sauce on it, no cap! 😎
+        </p>
+        <textarea id="emailInput" placeholder="Paste that dry prof email here..." style="width: 100%; padding: 1rem; border: 2px solid #00ffff; border-radius: 10px; background: rgba(0,0,0,0.3); color: #ffffff; font-size: 1.1rem; min-height: 150px; resize: vertical; transition: all 0.3s ease;" onfocus="this.style.boxShadow='0 0 20px #00ffff'; this.style.borderColor='#ff00ff';" onblur="this.style.boxShadow='none'; this.style.borderColor='#00ffff';"></textarea>
+        <button onclick="convertEmail()" style="background: linear-gradient(45deg, #ff00ff, #9d00ff); color: #ffffff; border: none; padding: 1rem 2rem; border-radius: 30px; font-family: 'Segoe UI', sans-serif; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; font-weight: bold; letter-spacing: 1px; margin-top: 1rem;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 25px #ff00ff';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+            Slangify It! 🚀
+        </button>
+        <div class="result-section" id="emailResult" style="background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 10px; margin-top: 2rem; border: 1px solid #00ff00; min-height: 100px;">
+            <div style="font-family: 'Comic Sans MS', cursive; font-size: 1.2rem; color: #00ffff; line-height: 1.5; text-shadow: 0 0 10px #00ffff;">
+                Your Gen-Z email drops here, fam! 👇
+            </div>
+        </div>
+    </div>
+    <script>
+        // Your existing script content...
+    
+        function convertEmail() {
+            const emailInput = document.getElementById('emailInput').value.trim();
+            const resultDiv = document.getElementById('emailResult');
+    
+            if (!emailInput) {
+                resultDiv.innerHTML = "<div style='font-family: \"Comic Sans MS\", cursive; font-size: 1.2rem; color: #00ffff;'>Bruh, drop an email first! 😛</div>";
+                return;
+            }
+    
+            // Simple email-to-Gen-Z conversion dictionary
+            const emailSlang = {
+                "dear students": "Yo fam",
+                "please submit": "Slide me",
+                "by the end of the day": "by EOD, no cap",
+                "regards": "Peace out",
+                "sincerely": "Fr fr",
+                "assignment": "homework drip",
+                "due date": "deadline szn",
+                "thank you": "Big props",
+                "office hours": "DM sesh",
+                "let me know": "Hit me up",
+                "important": "straight fire",
+                "meeting": "vibe check"
+            };
+    
+            let convertedEmail = emailInput.toLowerCase();
+            for (const [boring, slang] of Object.entries(emailSlang)) {
+                convertedEmail = convertedEmail.replace(new RegExp(boring, 'gi'), slang);
+            }
+    
+            // Add some Gen-Z flair
+            const flair = [" Sheesh! 😬", " No cap! 💯", " Bet! 🔥", " Periodt! 💅"];
+            convertedEmail = convertedEmail + flair[Math.floor(Math.random() * flair.length)];
+    
+            resultDiv.innerHTML = `<div style="font-family: 'Comic Sans MS', cursive; font-size: 1.2rem; color: #00ffff; line-height: 1.5; text-shadow: 0 0 10px #00ffff;">${convertedEmail}</div>`;
+        }
+    
+        // Rest of your existing script...
+    </script>
     <footer style="background: linear-gradient(145deg, #1a1a1a, #2d2d2d); padding: 2rem; border-top: 2px solid #ff00ff; box-shadow: 0 0 20px rgba(255, 0, 255, 0.3); margin-top: 2rem; text-align: center;">
         <div style="font-family: 'Comic Sans MS', cursive; font-size: 1.5rem; background: linear-gradient(45deg, #ff00ff, #00ffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; letter-spacing: 2px; animation: glitch 2s infinite; margin-bottom: 1rem;">
             Stay Lit, Fam 🔥
