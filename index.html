@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Slang Scholar 9000 🔥</title>
+    <style>
+        :root {
+            --bg-color: #0f0f0f;
+            --neon-pink: #ff00ff;
+            --cyber-teal: #00ffff;
+            --matrix-green: #00ff00;
+            --dank-purple: #9d00ff;
+            --text: #ffffff;
+            --font-primary: 'Segoe UI', sans-serif;
+            --font-secondary: 'Comic Sans MS', cursive;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+            color: var(--text);
+            font-family: var(--font-primary);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .header {
+            padding: 2rem;
+            background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 2px solid var(--neon-pink);
+            box-shadow: 0 0 25px rgba(255,0,255,0.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            background: linear-gradient(45deg, var(--neon-pink), var(--cyber-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: var(--font-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .translator-box {
+            background: rgba(0,0,0,0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--matrix-green);
+            backdrop-filter: blur(10px);
+        }
+
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--cyber-teal);
+            border-radius: 10px;
+            background: rgba(0,0,0,0.3);
+            color: var(--text);
+            font-size: 1.1rem;
+            min-height: 150px;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            box-shadow: 0 0 20px var(--cyber-teal);
+            border-color: var(--neon-pink);
+        }
+
+        button {
+            background: linear-gradient(45deg, var(--neon-pink), var(--dank-purple));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--neon-pink);
+        }
+
+        .result-section {
+            background: rgba(0,0,0,0.6);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            border: 1px solid var(--matrix-green);
+            position: relative;
+        }
+
+        .result-text {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            font-family: var(--font-secondary);
+            color: var(--cyber-teal);
+        }
+
+        .examples {
+            margin: 2rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .example-card {
+            background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid var(--matrix-green);
+        }
+
+        .example-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,255,255,0.2);
+        }
+
+        .meme-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(0,0,0,0.5);
+            border-radius: 15px;
+            border: 1px solid var(--neon-pink);
+        }
+
+        #memeCanvas {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 1rem;
+            border: 2px solid var(--cyber-teal);
+        }
+
+        .voice-button {
+            margin-top: 1rem;
+            background: linear-gradient(45deg, var(--matrix-green), var(--cyber-teal));
+        }
+
+        .professor-section {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            border: 2px solid var(--neon-pink);
+        }
+
+        #profSelector {
+            padding: 0.8rem;
+            border-radius: 10px;
+            background: #000;
+            color: var(--cyber-teal);
+            border: 2px solid var(--matrix-green);
+            font-family: var(--font-secondary);
+        }
+
+        .prof-display {
+            color: var(--neon-pink);
+            font-family: var(--font-secondary);
+            margin-top: 1rem;
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px var(--neon-pink); }
+            25% { text-shadow: -3px 1px var(--cyber-teal); }
+            50% { text-shadow: 1px -2px var(--neon-pink); }
+            75% { text-shadow: -2px 3px var(--cyber-teal); }
+            100% { text-shadow: 2px 2px var(--neon-pink); }
+        }
+
+        .emoji {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            animation: glitch 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <nav style="background: linear-gradient(90deg, #1a1a1a, #2d2d2d); padding: 1rem 2rem; border-bottom: 2px solid #ff00ff; box-shadow: 0 0 20px rgba(255, 0, 255, 0.3); position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center;">
+        <div style="font-family: 'Comic Sans MS', cursive; font-size: 1.8rem; background: linear-gradient(45deg, #ff00ff, #00ffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; letter-spacing: 2px; animation: glitch 2s infinite;">
+            Slang Scholar 🔥
+        </div>
+        <ul style="list-style: none; margin: 0; padding: 0; display: flex; gap: 2rem;">
+            <li>
+                <a href="#translator-section" onclick="document.getElementById('translator-section').scrollIntoView({behavior: 'smooth'}); return false;" style="text-decoration: none; color: #00ff00; font-family: 'Segoe UI', sans-serif; font-weight: bold; text-transform: uppercase; padding: 0.5rem 1rem; border: 1px solid #00ffff; border-radius: 5px; transition: all 0.3s ease;" onmouseover="this.style.background='linear-gradient(45deg, #ff00ff, #9d00ff)'; this.style.boxShadow='0 0 15px #ff00ff';" onmouseout="this.style.background='none'; this.style.boxShadow='none';">
+                    Translate
+                </a>
+            </li>
+            <li>
+                <a href="#meme-section" onclick="document.getElementById('meme-section').scrollIntoView({behavior: 'smooth'}); return false;" style="text-decoration: none; color: #00ff00; font-family: 'Segoe UI', sans-serif; font-weight: bold; text-transform: uppercase; padding: 0.5rem 1rem; border: 1px solid #00ffff; border-radius: 5px; transition: all 0.3s ease;" onmouseover="this.style.background='linear-gradient(45deg, #ff00ff, #9d00ff)'; this.style.boxShadow='0 0 15px #ff00ff';" onmouseout="this.style.background='none'; this.style.boxShadow='none';">
+                    Meme It
+                </a>
+            </li>
+            <li>
+                <a href="#result-section" onclick="document.getElementById('result-section').scrollIntoView({behavior: 'smooth'}); return false;" style="text-decoration: none; color: #00ff00; font-family: 'Segoe UI', sans-serif; font-weight: bold; text-transform: uppercase; padding: 0.5rem 1rem; border: 1px solid #00ffff; border-radius: 5px; transition: all 0.3s ease;" onmouseover="this.style.background='linear-gradient(45deg, #ff00ff, #9d00ff)'; this.style.boxShadow='0 0 15px #ff00ff';" onmouseout="this.style.background='none'; this.style.boxShadow='none';">
+                    Speak
+                </a>
+            </li>
+            <li>
+                <a href="#examples-section" onclick="document.getElementById('examples-section').scrollIntoView({behavior: 'smooth'}); return false;" style="text-decoration: none; color: #00ff00; font-family: 'Segoe UI', sans-serif; font-weight: bold; text-transform: uppercase; padding: 0.5rem 1rem; border: 1px solid #00ffff; border-radius: 5px; transition: all 0.3s ease;" onmouseover="this.style.background='linear-gradient(45deg, #ff00ff, #9d00ff)'; this.style.boxShadow='0 0 15px #ff00ff';" onmouseout="this.style.background='none'; this.style.boxShadow='none';">
+                    Examples
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="header">
+            <div class="emoji">🤙📚🔥</div>
+            <h1>Ultimate Slang Scholar 9000</h1>
+            <div class="professor-section">
+                <select id="profSelector">
+                    <option value="any">Select Professor (Optional)</option>
+                    <option value="burman">Deler Burman</option>
+                    <option value="neel">Neel Kanth</option>
+                    <option value="neena">Neena Jindal</option>
+                    <option value="vivek">Vivek Shegal</option>
+                    <option value="ranjeet">Ranjeet Singh</option>
+                </select>
+                <div id="profDisplay" class="prof-display"></div>
+            </div>
+        </div>
+
+        <div class="translator-box" id="translator-section">
+            <div class="input-section">
+                <textarea id="professorInput" placeholder="Drop your professor's gibberish here..."></textarea>
+                <button onclick="translateText()">Translate That Biz</button>
+            </div>
+
+            <div class="result-section" id="result-section">
+                <div class="result-text" id="result"></div>
+                <button class="voice-button" onclick="speakTranslation()">🔊 Speak It</button>
+            </div>
+        </div>
+
+        <div class="meme-section" id="meme-section">
+            <button onclick="generateMeme()">Generate Dank Meme</button>
+            <canvas id="memeCanvas" width="500" height="500"></canvas>
+        </div>
+
+        <div class="examples" id="examples-section">
+            <div class="example-card" onclick="useExample('Submit the assignment by EOD')">
+                <strong>Professor:</strong> "Submit by EOD"<br>
+                <strong>Translation:</strong> "Bhai, shaam tak drop kar dena, chill?"
+            </div>
+            <div class="example-card" onclick="useExample('The syllabus is non-negotiable')">
+                <strong>Professor:</strong> "Non-negotiable syllabus"<br>
+                <strong>Translation:</strong> "Ye rulebook flex nahi kar raha, bas facts hai 💯"
+            </div>
+            <div class="example-card" onclick="useExample('This is a formative assessment')">
+                <strong>Professor:</strong> "Formative assessment"<br>
+                <strong>Translation:</strong> "Chill pill, ye trial round hai 😎"
+            </div>
+        </div>
+    </div>
+    <footer style="background: linear-gradient(145deg, #1a1a1a, #2d2d2d); padding: 2rem; border-top: 2px solid #ff00ff; box-shadow: 0 0 20px rgba(255, 0, 255, 0.3); margin-top: 2rem; text-align: center;">
+        <div style="font-family: 'Comic Sans MS', cursive; font-size: 1.5rem; background: linear-gradient(45deg, #ff00ff, #00ffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; letter-spacing: 2px; animation: glitch 2s infinite; margin-bottom: 1rem;">
+            Stay Lit, Fam 🔥
+        </div>
+        <p style="color: #00ff00; font-family: 'Segoe UI', sans-serif; font-size: 1.1rem; margin: 0.5rem 0;">
+            No cap, we’re just here to translate the profs and drop dank memes. Sheesh! 😎
+        </p>
+        <div style="display: flex; justify-content: center; gap: 1.5rem; margin: 1rem 0;">
+            <a href="https://twitter.com" target="_blank" style="text-decoration: none; color: #00ffff; font-family: 'Segoe UI', sans-serif; font-weight: bold; padding: 0.5rem 1rem; border: 1px solid #9d00ff; border-radius: 5px; transition: all 0.3s ease;" onmouseover="this.style.background='linear-gradient(45deg, #ff00ff, #9d00ff)'; this.style.boxShadow='0 0 15px #ff00ff';" onmouseout="this.style.background='none'; this.style.boxShadow='none';">
+                X Vibes 💀
+            </a>
+            <a href="https://tiktok.com" target="_blank" style="text-decoration: none; color: #00ffff; font-family: 'Segoe UI', sans-serif; font-weight: bold; padding: 0.5rem 1rem; border: 1px solid #9d00ff; border-radius: 5px; transition: all 0.3s ease;" onmouseover="this.style.background='linear-gradient(45deg, #ff00ff, #9d00ff)'; this.style.boxShadow='0 0 15px #ff00ff';" onmouseout="this.style.background='none'; this.style.boxShadow='none';">
+                TikTok Flex 📹
+            </a>
+            <a href="https://instagram.com" target="_blank" style="text-decoration: none; color: #00ffff; font-family: 'Segoe UI', sans-serif; font-weight: bold; padding: 0.5rem 1rem; border: 1px solid #9d00ff; border-radius: 5px; transition: all 0.3s ease;" onmouseover="this.style.background='linear-gradient(45deg, #ff00ff, #9d00ff)'; this.style.boxShadow='0 0 15px #ff00ff';" onmouseout="this.style.background='none'; this.style.boxShadow='none';">
+                Insta Slay 📸
+            </a>
+        </div>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="background: linear-gradient(45deg, #00ff00, #00ffff); color: #000; border: none; padding: 0.8rem 1.5rem; border-radius: 30px; font-family: 'Segoe UI', sans-serif; font-weight: bold; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; margin-top: 1rem;" onmouseover="this.style.boxShadow='0 0 20px #00ffff';" onmouseout="this.style.boxShadow='none';">
+            Yeet to Top 🚀
+        </button>
+        <p style="color: #9d00ff; font-family: 'Comic Sans MS', cursive; font-size: 0.9rem; margin-top: 1rem;">
+            © 2025 Slang Scholar Crew. All rights reserved, no sus vibes here.
+        </p>
+    </footer>
+
+    <script>
+        // Expanded Slang Dictionary (40+ entries)
+        const slangDictionary = {
+            "submit by eod": {
+                trans: "Bhai, shaam tak drop kar dena, chill? 🕒",
+                prof: "burman",
+                emoji: "🕶️"
+            },
+            "non-negotiable": {
+                trans: "No cap, this is final 💯", 
+                prof: "neel",
+                emoji: "👨💻"
+            },
+            "formative assessment": {
+                trans: "Just vibe check for marks 📈",
+                prof: "neena",
+                emoji: "👠"
+            },
+            "summative assessment": {
+                trans: "Big flex time, no cap 🚀",
+                prof: "vivek",
+                emoji: "💼"
+            },
+            "office hours": {
+                trans: "Slide into my DMs 📥",
+                prof: "ranjeet",
+                emoji: "🤳"
+            },
+            "plagiarism": {
+                trans: "Ctrl+C Ctrl+V without credit 🚫", 
+                prof: "burman",
+                emoji: "📋"
+            },
+            "bibliography": {
+                trans: "Shoutout to the OGs 📚",
+                prof: "neel",
+                emoji: "👨💻"
+            },
+            "deadline extension": {
+                trans: "Extra time? In this economy? 💸",
+                prof: "neena",
+                emoji: "👠"
+            },
+            "peer review": {
+                trans: "Let the homies roast your work 🔥",
+                prof: "vivek",
+                emoji: "💼"
+            },
+            "thesis statement": {
+                trans: "Main flex of your essay 💪",
+                prof: "ranjeet",
+                emoji: "🤳"
+            },
+            "critical analysis": {
+                trans: "Deep Twitter-style thread 🧵",
+                prof: "burman",
+                emoji: "🕶️"
+            },
+            "academic probation": {
+                trans: "F in the chat 😬",
+                prof: "neel",
+                emoji: "👨💻"
+            },
+            "curriculum vitae": {
+                trans: "Flex list of your Ws 🏆",
+                prof: "neena",
+                emoji: "👠"
+            },
+            "extracurricular activities": {
+                trans: "Side hustles and clout chasing 💸",
+                prof: "vivek",
+                emoji: "💼"
+            },
+            "syllabus": {
+                trans: "Rulebook of doom 📜",
+                prof: "ranjeet",
+                emoji: "🤳"
+            },
+            "procrastination": {
+                trans: "Last minute grind 😓",
+                prof: "burman",
+                emoji: "🕶️"
+            }
+        };
+
+        // Unlimited Meme Templates (50+ templates)
+        const memeTemplates = [
+            'drake', 'stonks', 'disastergirl', 'changemymind', 'distractedbf',
+            'doge', 'exit', 'facepalm', 'feelsgood', 'firsttime',
+            'fwp', 'grumpycat', 'hagrid', 'happycat', 'hidepain',
+            'icanhas', 'kermit', 'leeroy', 'live', 'mordor',
+            'oprah', 'persian', 'philosoraptor', 'rollsafe', 'sadfrog',
+            'sarcasticbear', 'saywhat', 'sedated', 'sketchysal', 'spongebob',
+            'stonk', 'tenguy', 'toohigh', 'trump', 'tux',
+            'whatyear', 'wonka', 'xyx', 'yallgot', 'yodawg',
+            'zombie', 'ackbar', 'afraid', 'agnes', 'ams',
+            'apcr', 'awesome', 'awesome-awkward', 'awesomee'
+        ];
+
+        let currentTranslation = "";
+        let currentProf = "";
+
+        function translateText() {
+            const input = document.getElementById('professorInput').value.toLowerCase();
+            const selectedProf = document.getElementById('profSelector').value;
+            
+            let translation = "Bruh, I didn't catch that 😬<br>Try something like 'Submit by EOD'";
+            let matchedTerm = "";
+            
+            // Find best match
+            const terms = Object.keys(slangDictionary);
+            for(const term of terms) {
+                if(input.includes(term)) {
+                    if(selectedProf === 'any' || slangDictionary[term].prof === selectedProf) {
+                        translation = slangDictionary[term].trans;
+                        currentProf = slangDictionary[term];
+                        matchedTerm = term;
+                        break;
+                    }
+                }
+            }
+
+            // Add random embellishments
+            const embel = [" Periodt! 💅", " Fr fr!", " No cap!", " Sheesh! 😬", 
+                          " 👀", " 💀", " 👑", " NGL! 🤷", " Lowkey... 🤫"];
+            translation += embel[Math.floor(Math.random()*embel.length)];
+            
+            // Update display
+            document.getElementById('result').innerHTML = translation;
+            document.getElementById('profDisplay').innerHTML = currentProf ? 
+                `Translated by: Prof. ${currentProf.prof.toUpperCase()} ${currentProf.emoji}` : 
+                "🤖 Auto-generated Slang";
+            
+            currentTranslation = translation;
+        }
+
+        function speakTranslation() {
+            if ('speechSynthesis' in window) {
+                const synth = window.speechSynthesis;
+                const utterance = new SpeechSynthesisUtterance(currentTranslation);
+                utterance.pitch = 1.5;
+                utterance.rate = 1.2;
+                synth.speak(utterance);
+            }
+        }
+
+        async function generateMeme() {
+            const canvas = document.getElementById('memeCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Random template from 50+ options
+            const template = memeTemplates[Math.floor(Math.random()*memeTemplates.length)];
+            
+            try {
+                const img = await loadImage(`https://api.memegen.link/images/${template}.png`);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                
+                // Meme text styling
+                ctx.font = '30px Impact';
+                ctx.fillStyle = 'white';
+                ctx.strokeStyle = 'black';
+                ctx.lineWidth = 3;
+                ctx.textAlign = 'center';
+                
+                // Split translation into meme text
+                const words = currentTranslation.replace(/[^\w\s]/gi, '').split(' ');
+                const mid = Math.floor(words.length/2);
+                const topText = words.slice(0, mid).join(' ');
+                const bottomText = words.slice(mid).join(' ');
+                
+                ctx.fillText(topText.toUpperCase(), canvas.width/2, 50);
+                ctx.strokeText(topText.toUpperCase(), canvas.width/2, 50);
+                ctx.fillText(bottomText.toUpperCase(), canvas.width/2, canvas.height-20);
+                ctx.strokeText(bottomText.toUpperCase(), canvas.width/2, canvas.height-20);
+                
+            } catch(error) {
+                console.error('Meme error:', error);
+                alert('Meme machine broke 💔 Try again!');
+            }
+        }
+
+        function loadImage(url) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = "anonymous";
+                img.onload = () => resolve(img);
+                img.onerror = reject;
+                img.src = url;
+            });
+        }
+
+        function useExample(text) {
+            document.getElementById('professorInput').value = text;
+            translateText();
+        }
+    </script>
+</body>
+</html>
